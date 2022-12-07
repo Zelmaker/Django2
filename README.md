@@ -1,4 +1,25 @@
 1. Используя знания из урока, подключите к вашему проекту PostgreSQL.
+
+virtualenv virtual
+source virtual/bin/activate
+pip install django
+pip freeze > requirements.txt
+django-admin startproject <project-name> .
+python manage.py startapp <app-name>
+pip install psycopg2
+Создаем в pgadmin базу постгрес
+Меняем в settings.py
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'avito_db',
+        'USER': 'postgres',
+        'PASSWORD': 'postgres',
+        'HOST': 'localhost',
+        'PORT': '5432',
+    }
+}
+python manage.py runserver
 2. Изучите предложенный вам [датасет](https://github.com/skypro-008/lesson28_project_sourse/tree/main/datasets), создайте по нему модели и загрузите данные в таблицы. HINT: некоторые модели и поля у вас уже есть, так что можно дописать только то, чего недостает. А вот данные придется удалить и залить заново.
 3. Не забудьте про админку! Ваши модели должны быть с русскими названиями, а в качестве ссылки на запись должны отображаться:
     1. для категории — `name`,
